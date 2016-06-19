@@ -16,6 +16,7 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
@@ -28,6 +29,7 @@ public:
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
+    QLCDNumber *lcdNumber;
     QGraphicsView *graphicsView;
 
     void setupUi(QMainWindow *MainWindow)
@@ -52,12 +54,17 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/background/background.jpg")));
 
         horizontalLayout->addWidget(label);
 
+        lcdNumber = new QLCDNumber(centralWidget);
+        lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
+
+        horizontalLayout->addWidget(lcdNumber);
+
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setStyleSheet(QStringLiteral("background-image: url(:/background/background.jpg);"));
 
         horizontalLayout->addWidget(graphicsView);
 
@@ -71,7 +78,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        label->setText(QString());
+        label->setText(QApplication::translate("MainWindow", "label", 0));
     } // retranslateUi
 
 };
