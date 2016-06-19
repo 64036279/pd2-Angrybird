@@ -45,7 +45,7 @@ private slots:
     void tick();
     // For debug slot
     void QUITSLOT();
-    //void deleterival();
+
 
 private:
     Ui::MainWindow *ui;
@@ -62,7 +62,7 @@ private:
     wood *build[3];
     rival *rival1[1];
     Bird *birdie[4];
-   bool dead1,dead2;
+   bool dead1=false;
 
 };
 
